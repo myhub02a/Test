@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Polity</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: var(--bg-color); color: var(--text-color); padding: 5px; margin: 0;position: relative; }
+    :root {
+      --bg-color: #fff; --text-color: #000; --option-border: #1e1e1e;
+      --dialog-bg: #F0F0F0;
+    }
+    .dark-mode {
+      --bg-color: #121212; --text-color: #fff; --option-border: #f0f0f0;
+      --dialog-bg: #1e1e1e;
+    }
+    .question-box { display: none; padding: 10px; margin-bottom: 20px; }
+    .question-box.active { display: block; }
+    h2 { font-size: 20px; }
+    .options label {
+      margin-bottom: 10px; cursor: pointer; padding: 10px;
+      border: 1px solid var(--option-border); border-radius: 6px;
+      transition: background 0.3s; display: block;
+    }
+    .options label.correct { background-color: #2e7d32; }
+    .options label.incorrect { background-color: #c62828; }
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+      padding: 6px; 
+      font-size: 16px;
+      background: #007bff; 
+      color: #fff;
+      border: none; 
+      border-radius: 8px;
+      cursor: pointer;
+      flex: 1 ;
+    }
+    button:hover { opacity: 0.9; }
+    .top-bar {
+      display: flex; 
+      justify-content: space-between;
+      margin-bottom: 20px; 
+      font-size: 18px; 
+      background: var(--dialog-bg);
+    }
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+      position: fixed;
+      bottom: 0px;
+      left: 0;
+      right: 0;
+      padding: 10px 20px;
+      background: var(--dialog-bg);
+      z-index: 1000;
+    }
+    .result { font-size: 18px; font-weight: bold; margin-top: 20px; padding-bottom: 60px; }
+    .dialog-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--bg-color); display: flex;
+      justify-content: center; align-items: center; z-index: 9999;
+    }
+    .dialog-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;      
+      gap: 12px;
+      background: var(--dialog-bg);
+      min-width: 70%;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: var(--text-color);
+    }
+    .correct-text { color: #2e7d32; }
+    .incorrect-text { color: #c62828; }
+    .switch { position: absolute; top: 15px; right: 15px; }
+    .switch input { visibility: hidden; }
+    .switch label {
+      cursor: pointer; text-indent: -9999px;
+      width: 40px; height: 18px; background: grey;
+      display: block; border-radius: 90px; position: relative;
+    }
+    .switch label:after {
+      content: ''; position: absolute; left: 4px; top: 1px;
+      width: 17px; height: 17px; background: #fff;
+      border-radius: 90px; transition: 0.3s;
+    }
+    .switch input:checked + label { background: #007bff; }
+    .switch input:checked + label:after {
+      left: calc(100% - 4px); transform: translateX(-100%);
+    }
+    .explanation {
+      margin-top: 10px;
+      font-size: 16px;
+      text-align: justify;
+      background: var(--bg-color);
+      padding: 10px;
+      border-radius: 6px; 
+      color: var(--text-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="switch">
+    <input type="checkbox" id="modeToggle" />
+    <label for="modeToggle">Dark Mode</label>
+  </div>
+
+  <div class="top-bar">
+    <div id="timer">Time Left: 30:00</div>
+    <div id="progress">1 of 3</div>
+  </div>
+
+  <form id="quizForm"></form>
+  <div class="result" id="result"></div>
+
+  <div id="dialog" class="dialog-overlay" style="display:None">
+    <div class="dialog-box">
+      <h3>Your Result</h3>
+      <div id="dialogContent"></div>
+      <button onclick="showAnalysisMode()">Analysis</button>
+    </div>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    document.getElementById('modeToggle').addEventListener('change', function () {
+      document.body.classList.toggle('dark-mode', this.checked);
+    });
+//###########Add here your questions############
+  
+const questions = [
+  {
+    q: "Which was the first British parliamentary act to regulate the affairs of the East India Company in India?",
+    options: ["Pitt’s India Act", "Regulating Act of 1773", "Indian Councils Act, 1861", "Charter Act of 1813"],
+    correct: 1,
+    explanation: "The Regulating Act of 1773 was the first attempt by the British Parliament to regulate the East India Company."
+  },
+  {
+    q: "Which position was created by the Regulating Act of 1773?",
+    options: ["Secretary of State", "Governor-General of India", "Governor-General of Bengal", "Viceroy of India"],
+    correct: 2,
+    explanation: "The Regulating Act created the post of Governor-General of Bengal, first held by Warren Hastings."
+  },
+  {
+    q: "Which body was established to check corruption in the East India Company under the Regulating Act?",
+    options: ["Board of Control", "Supreme Court at Calcutta", "Civil Service Commission", "Privy Council"],
+    correct: 1,
+    explanation: "The Supreme Court was set up at Calcutta in 1774 to act as the apex court."
+  },
+  {
+    q: "Which act established dual control between the British Government and the Company?",
+    options: ["Regulating Act, 1773", "Pitt’s India Act, 1784", "Charter Act, 1813", "Government of India Act, 1858"],
+    correct: 1,
+    explanation: "Pitt’s India Act introduced dual control through the Board of Control and Court of Directors."
+  },
+  {
+    q: "Who had the real power under Pitt’s India Act of 1784?",
+    options: ["Governor of Bombay", "Court of Directors", "Board of Control", "Governor-General"],
+    correct: 2,
+    explanation: "Board of Control, appointed by the British government, held the real power."
+  },
+  {
+    q: "Which Charter Act ended the trade monopoly of the East India Company in India (except for tea and China trade)?",
+    options: ["Charter Act of 1813", "Charter Act of 1833", "Charter Act of 1853", "Regulating Act of 1773"],
+    correct: 0,
+    explanation: "The Charter Act of 1813 ended the Company’s monopoly in India."
+  },
+  {
+    q: "Which Charter Act made the Governor-General of Bengal the Governor-General of India?",
+    options: ["1813", "1833", "1853", "1784"],
+    correct: 1,
+    explanation: "The Charter Act of 1833 created the post of Governor-General of India; Lord William Bentinck was the first."
+  },
+  {
+    q: "Which act introduced open competition for civil services in India?",
+    options: ["Charter Act of 1813", "Charter Act of 1833", "Charter Act of 1853", "Indian Councils Act of 1861"],
+    correct: 2,
+    explanation: "The Charter Act of 1853 introduced a merit-based system through competitive exams."
+  },
+  {
+    q: "The Indian Councils Act of 1861 is significant because it:",
+    options: ["Created the post of Secretary of State", "Introduced portfolio system", "Legalized the division of Bengal", "Granted universal suffrage"],
+    correct: 1,
+    explanation: "The Act introduced the portfolio system in the executive council."
+  },
+  {
+    q: "Which act first introduced Indian representation in the Legislative Councils?",
+    options: ["Indian Councils Act, 1861", "Indian Councils Act, 1892", "Indian Councils Act, 1909", "Government of India Act, 1919"],
+    correct: 0,
+    explanation: "The Act of 1861 allowed the inclusion of Indians as non-official members."
+  },
+  {
+    q: "Which act is known for the introduction of indirect elections for Indians?",
+    options: ["Councils Act, 1861", "Councils Act, 1892", "Councils Act, 1909", "GOI Act, 1919"],
+    correct: 1,
+    explanation: "Though limited, the 1892 Act introduced indirect elections for some members."
+  },
+  {
+    q: "Which act is also called the Morley-Minto Reforms?",
+    options: ["Indian Councils Act, 1892", "Indian Councils Act, 1909", "GOI Act, 1919", "GOI Act, 1935"],
+    correct: 1,
+    explanation: "The 1909 Act, named after Morley and Minto, introduced separate electorates."
+  },
+  {
+    q: "Which act officially ended Company rule and transferred power to the British Crown?",
+    options: ["Government of India Act, 1858", "Indian Councils Act, 1892", "Government of India Act, 1935", "Pitt’s India Act"],
+    correct: 0,
+    explanation: "The 1858 Act made India a direct British colony."
+  },
+  {
+    q: "Which act introduced Dyarchy in the provinces?",
+    options: ["Government of India Act, 1858", "Government of India Act, 1919", "Government of India Act, 1935", "Indian Councils Act, 1909"],
+    correct: 1,
+    explanation: "The Montagu-Chelmsford Reforms (1919) introduced dyarchy in provinces."
+  },
+  {
+    q: "Which act proposed an All India Federation and introduced provincial autonomy?",
+    options: ["GOI Act, 1919", "GOI Act, 1935", "Indian Independence Act", "Councils Act, 1909"],
+    correct: 1,
+    explanation: "GOI Act 1935 was the most comprehensive; it proposed federation and provincial autonomy."
+  },
+  {
+    q: "Which act ended British rule in India?",
+    options: ["Government of India Act, 1935", "Indian Councils Act, 1909", "Indian Independence Act, 1947", "Regulating Act, 1773"],
+    correct: 2,
+    explanation: "The Indian Independence Act led to the partition and independence of India and Pakistan."
+  },
+  {
+    q: "The Indian Independence Act was passed by which body?",
+    options: ["Indian Constituent Assembly", "British Parliament", "East India Company", "Cripps Mission"],
+    correct: 1,
+    explanation: "The British Parliament passed this Act on 18 July 1947."
+  },
+  {
+    q: "What was the date of effect for the Indian Independence Act?",
+    options: ["26 January 1950", "15 August 1947", "2 October 1947", "26 November 1949"],
+    correct: 1,
+    explanation: "India became independent on 15 August 1947."
+  },
+  {
+    q: "According to the Indian Independence Act, India was to be governed as a:",
+    options: ["Dominion", "Republic", "Protectorate", "Colony"],
+    correct: 0,
+    explanation: "India and Pakistan were declared Dominions under the British Commonwealth."
+  },
+  {
+    q: "Who was given the power to divide assets between India and Pakistan under the Act?",
+    options: ["Lord Mountbatten", "British Crown", "Boundary Commission", "Governor-General"],
+    correct: 3,
+    explanation: "The Governor-General oversaw the division of armed forces, services, and finances."
+  }
+];
+
+
+
+//##############
+    const quizForm = document.getElementById('quizForm');
+    let currentQuestion = 0;
+    let timeLeft = 1500;
+    const timerEl = document.getElementById('timer');
+    const progressEl = document.getElementById('progress');
+    let score = 0;
+    let userAnswers = new Array(questions.length);
+    let isAnalysisMode = false;
+
+    questions.forEach((question, index) => {
+      const box = document.createElement('div');
+      box.className = 'question-box';
+      if (index === 0) box.classList.add('active');
+      const html = `
+        <h2>${index + 1}. ${question.q}</h2>
+        <div class="options">
+          ${question.options.map((opt, i) =>
+            `<label id="q${index}opt${i}" class="opt-label"><input type="radio" name="q${index}" value="${i}" onchange="recordAnswer(${index}, ${i})"> ${String.fromCharCode(97+i)}) ${opt}</label>`).join('')}
+        </div>
+        <div class="explanation" id="explanation${index}" style="display:none"></div>
+      `;
+      box.innerHTML = html;
+      quizForm.appendChild(box);
+    });
+
+    const navBar = document.createElement('div');
+    navBar.className = 'navigation';
+    document.body.appendChild(navBar);
+
+    function updateNavButtons() {
+      navBar.innerHTML = isAnalysisMode
+        ? `<button onclick="prevQuestion()">Previous</button><button onclick="nextQuestion()">Next</button>`
+        : `<button onclick="prevQuestion()">Previous</button><button onclick="clearCurrentResponse()">Clear</button>${currentQuestion === questions.length - 1
+          ? '<button onclick="submitQuiz()">Submit Test</button>'
+          : '<button onclick="nextQuestion()">Next</button>'}`;
+    }
+
+    function showQuestion(index) {
+      document.querySelectorAll('.question-box').forEach((box, i) => {
+        box.classList.toggle('active', i === index);
+      });
+      progressEl.textContent = `${index + 1} of ${questions.length}`;
+
+      if (isAnalysisMode) {
+        const userAns = userAnswers[index];
+        const correctAns = questions[index].correct;
+        timerEl.textContent = userAns === correctAns ? 'Correct' :
+                              userAns === undefined ? 'Not Answered' : 'Incorrect';
+        timerEl.className = userAns === correctAns ? 'correct-text' :
+                            userAns === undefined ? '' : 'incorrect-text';
+
+        const labels = document.querySelectorAll(`#quizForm .question-box:nth-child(${index + 1}) .opt-label`);
+        labels.forEach((label, i) => {
+          const input = label.querySelector('input');
+          input.disabled = true;
+          if (i === correctAns) label.classList.add('correct');
+          if (i === userAns && i !== correctAns) label.classList.add('incorrect');
+        });
+
+        const expDiv = document.getElementById(`explanation${index}`);
+        expDiv.innerHTML = "<h2>Explanation:</h2><br>" + questions[index].explanation;
+        expDiv.style.display = "block";
+      }
+
+      updateNavButtons();
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+      }
+    }
+
+    function clearCurrentResponse() {
+      document.querySelectorAll(`input[name=q${currentQuestion}]`).forEach(input => input.checked = false);
+      userAnswers[currentQuestion] = undefined;
+    }
+
+    function recordAnswer(index, value) {
+      if (!isAnalysisMode) userAnswers[index] = value;
+    }
+
+    function submitQuiz() {
+      clearInterval(countdown);
+      document.querySelectorAll('.question-box').forEach(box => box.classList.remove('active'));
+      timerEl.innerHTML = '';
+
+      const total = questions.length;
+      let correct = 0, incorrect = 0;
+      userAnswers.forEach((ans, i) => {
+        if (ans === questions[i].correct) correct++;
+        else if (ans !== undefined) incorrect++;
+      });
+      const notAnswered = total - correct - incorrect;
+      score = correct - incorrect * 0.33;
+
+      document.getElementById('dialogContent').innerHTML =
+        `Correct: ${correct}<br>Incorrect: ${incorrect}<br>Not Answered: ${notAnswered}<br>Score: ${score.toFixed(2)} / ${total}`;
+      document.getElementById('dialog').style.display = 'flex';
+    }
+
+    function showAnalysisMode() {
+      isAnalysisMode = true;
+      document.getElementById('dialog').style.display = 'none';
+      currentQuestion = 0;
+      showQuestion(currentQuestion);
+    }
+
+    const countdown = setInterval(() => {
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        submitQuiz();
+      } else {
+        const minutes = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+        const seconds = String(timeLeft % 60).padStart(2, '0');
+        timerEl.textContent = `Time Left: ${minutes}:${seconds}`;
+        timeLeft--;
+      }
+    }, 1000);
+
+    showQuestion(currentQuestion);
+  </script>
+</body>
+</html>
