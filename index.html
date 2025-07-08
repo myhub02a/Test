@@ -220,44 +220,778 @@ const questions = [
     explanation: "Article 3 deals with state reorganization, not constitutional amendment."
   },
   {
-    q: "Which body is consulted before introducing a bill under Article 3?",
-    options: ["Supreme Court", "State Legislature", "Prime Minister", "Election Commission"],
-    correct: 1,
-    explanation: "The President must refer the bill to the State Legislature for its views."
-  },
+const questions = [
   {
-    q: "Which of the following powers does Parliament NOT have under Article 3?",
-    options: ["Change name of state", "Create a new state", "Abolish Constitution", "Increase area of a state"],
-    correct: 2,
-    explanation: "Only state reorganization powers are given under Article 3, not abolishing the Constitution."
-  },
-  {
-    q: "India is described as a ‘Union’ to:",
-    options: ["Deny states sovereignty", "Allow secession", "Emphasize equality", "Highlight unity and indestructibility"],
+    q: "Which of the following is not true about Rajputs?",
+    options: [
+      "Their rise was an important social phenomenon of the early medieval period.",
+      "They comprised the ruling and warrior chiefs",
+      "They were a landed aristocracy",
+      "The medas were denied entry to their ranks"
+    ],
     correct: 3,
-    explanation: "The term 'Union' emphasizes that states do not have the right to secede."
+    explanation: "Medas were not denied entry; Rajput ranks included various tribal groups who assimilated into Kshatriya status."
   },
   {
-    q: "Which among the following UTs was created by bifurcation of a state in 2019?",
-    options: ["Puducherry", "Lakshadweep", "Ladakh", "Chandigarh"],
+    q: "Gold coins attributed to Harsha depict on the reverse",
+    options: [
+      "Avalokitesvara",
+      "Tara",
+      "Surya",
+      "Shiva-Parvati"
+    ],
+    correct: 3,
+    explanation: "Harsha's gold coins featured Shiva-Parvati, reflecting his Shaivite leanings despite religious tolerance."
+  },
+  {
+    q: "The famous commentator of Vedic literature, associated with the Paramaras was",
+    options: [
+      "Apararka",
+      "Kshirasvamin",
+      "Soyana",
+      "Uvata"
+    ],
+    correct: 3,
+    explanation: "Uvata was the renowned commentator under Paramara patronage, known for his work on the Rigveda."
+  },
+  {
+    q: "Who among the following exposed evils of the contemporary society by his satirical writings?",
+    options: [
+      "Vishakhadatta",
+      "Banabhatta",
+      "Kalhana",
+      "Kshemendra"
+    ],
+    correct: 0,
+    explanation: "Vishakhadatta critiqued societal corruption through works like Mudrarakshasa, exposing political intrigue."
+  },
+  {
+    q: "Who among the following was the patron of the Kota school of painting?",
+    options: [
+      "Balawant Singh",
+      "Govardhan Singh",
+      "Savant Singh",
+      "Umed Singh"
+    ],
+    correct: 3,
+    explanation: "Umed Singh (r. 1771-1819 CE) revitalized the Kota school, known for its dynamic hunting scenes and nature themes."
+  },
+  {
+    q: "Rajashekhara, the author of ‘Karpurmanjari’, was the teacher of",
+    options: [
+      "Mahendrapala I",
+      "Narsimhavarma II",
+      "Bhoja parmara",
+      "Yuvarajadeva II"
+    ],
+    correct: 0,
+    explanation: "As court poet of the Gurjara-Pratiharas, Rajashekhara tutored Emperor Mahendrapala I (r. 885-910 CE)."
+  },
+  {
+    q: "Who among the following has been criticized by Kalhana for confiscating the temple treasure?",
+    options: [
+      "Avantivarman",
+      "Didda",
+      "Harsha",
+      "Lalitaditya"
+    ],
     correct: 2,
-    explanation: "Ladakh was carved out from Jammu and Kashmir in 2019."
+    explanation: "Kalhana's Rajatarangini condemns King Harsha of Kashmir (1089-1101 CE) for plundering temple wealth to fund wars."
   },
   {
-    q: "Who has the final authority to alter state boundaries?",
-    options: ["Supreme Court", "President", "Parliament", "State Assembly"],
-    correct: 2,
-    explanation: "Parliament has the sole authority under Article 3 to alter state boundaries."
+    q: "Who among the following levied Turushka-danda?",
+    options: [
+      "Gahadavalas",
+      "Chandellas",
+      "Chahamanas",
+      "Shahis"
+    ],
+    correct: 0,
+    explanation: "The Gahadavalas imposed Turushka-danda (Turk tax) to fund defenses against Ghaznavid invasions in the 11th century."
   },
   {
-    q: "Which of the following was a new state created in the year 2000?",
-    options: ["Goa", "Chhattisgarh", "Telangana", "Sikkim"],
+    q: "Which of the following sources provides a vivid description of Sindh?",
+    options: [
+      "Khazainul Futuh",
+      "Tarikh-i-Firoz-Shahi",
+      "Insha-i-mehru",
+      "Chachnamah"
+    ],
+    correct: 3,
+    explanation: "Chachnamah (13th century Arabic chronicle) details Sindh's geography, society, and the Arab conquest."
+  },
+  {
+    q: "Kumardevi, the Queen of Govindachandra Gahadavala, constructed Dharmachakra-jina-vihar at",
+    options: [
+      "Bodhgaya",
+      "Kusinagar",
+      "Kanauj",
+      "Sarnath"
+    ],
+    correct: 3,
+    explanation: "Built at Sarnath (c. 1124 CE), this monastery commemorated Buddha's first sermon and promoted Jainism."
+  },
+  {
+    q: "Harsha had assumed the title",
+    options: [
+      "Parama-Bhagavata",
+      "Parama-Mahesvara",
+      "Parama-Saugata",
+      "Parama-Adityabhah"
+    ],
     correct: 1,
-    explanation: "Chhattisgarh was created from Madhya Pradesh in 2000."
+    explanation: "Parama-Mahesvara (Supreme Devotee of Shiva) reflected Harsha's Shaivite alignment despite his religious syncretism."
+  },
+  {
+    q: "The Chola rulers were generally",
+    options: [
+      "Saivites",
+      "Vaisnavites",
+      "Worshippers of Mother-goddess",
+      "Worshippers of Kartikeya"
+    ],
+    correct: 0,
+    explanation: "Though tolerant, Chola kings like Rajaraja I were ardent Shaivites, building grand temples like Thanjavur's Brihadeeswarar."
+  },
+  {
+    q: "The Turkish brought with them musical instruments",
+    options: [
+      "Rabab and Sarangi",
+      "Sitar and Flute",
+      "Veena and Tabla",
+      "Tanpura and Mridang"
+    ],
+    correct: 0,
+    explanation: "Rabab (lute) and Sarangi (bowed instrument) were introduced by Turks, later indigenized in Hindustani classical music."
+  },
+  {
+    q: "Harsha’s military expansion in the Deccan was checked by",
+    options: [
+      "Mahendravarman",
+      "Dantidurga",
+      "Rajendra",
+      "Pulkesin II"
+    ],
+    correct: 3,
+    explanation: "Chalukya king Pulakeshin II defeated Harsha at the Narmada (618 CE), halting his southern campaign as per Aihole inscription."
+  },
+  {
+    q: "Who of the following adopted Garuda as dynasty emblem after the imperial Guptas?",
+    options: [
+      "Rashtrakutas",
+      "Western Chalukyas",
+      "Shilaharas",
+      "Chedis"
+    ],
+    correct: 0,
+    explanation: "Rashtrakutas used Garuda (Vishnu's mount) as their royal insignia, seen in Ellora Kailasa temple sculptures."
+  },
+  {
+    q: "The north Indian dynasties that confronted the Rashtrakutas were",
+    options: [
+      "The Pratiharas and the Paramaras",
+      "The Palas and the Chandelas",
+      "The Pratiharas and the Palas",
+      "The Chalukyas and the Chahamans"
+    ],
+    correct: 2,
+    explanation: "The Tripartite Struggle (8th-10th c.) involved Rashtrakutas battling Pratiharas (west) and Palas (east) for Kannauj."
+  },
+  {
+    q: "The Vikramshila Mahavihara, the renowned educational centre of Pala period at",
+    options: [
+      "Antichak",
+      "Aphasad",
+      "Basarh",
+      "Chandimau"
+    ],
+    correct: 0,
+    explanation: "Founded by Dharmapala (c. 800 CE) at Antichak (Bihar), it rivaled Nalanda with Vajrayana Buddhism focus."
+  },
+  {
+    q: "Which one of the following Chola rulers had persecuted Ramanuja and ousted him from his Kingdom?",
+    options: [
+      "Kulothunga I",
+      "Kulothunga II",
+      "Adhirajendra",
+      "Rajaraja I"
+    ],
+    correct: 0,
+    explanation: "Kulothunga I (1070-1120 CE) exiled Ramanuja for promoting Vaishnavism, threatening Shaiva dominance."
+  },
+  {
+    q: "Which one of the following was the primary assembly in the Chola village administration?",
+    options: [
+      "Nadu",
+      "Sabha",
+      "Ur",
+      "Mahasabha"
+    ],
+    correct: 2,
+    explanation: "Ur was the general assembly of all tax-paying villagers, handling local disputes, irrigation, and land management."
+  },
+  {
+    q: "A Chalukya inscription is dated in the year 556 of the Saka era. Its equivalent is to",
+    options: [
+      "478 AD",
+      "499 AD",
+      "613 AD",
+      "634 AD"
+    ],
+    correct: 0,
+    explanation: "Saka 556 = 556 - 78 = 478 CE (Saka era begins 78 CE). Confirmed by Badami Chalukya records."
+  },
+  {
+    q: "Vikramshila Mahavihar was established by the ruler of",
+    options: [
+      "Pushyabhuti dynasty",
+      "Barman dynasty",
+      "Sen dynasty",
+      "Pala dynasty"
+    ],
+    correct: 3,
+    explanation: "Pala emperor Dharmapala founded Vikramshila (c. 800 CE) to revive Mahayana Buddhism in eastern India."
+  },
+  {
+    q: "In which court was a Chinese embassy sent by T’ang emperor?",
+    options: [
+      "Rajaraja I",
+      "Rajendra I",
+      "Harshavardhana",
+      "Prantaka I"
+    ],
+    correct: 2,
+    explanation: "Tang envoy Wang Xuance visited Harsha's court (643 CE), documented in Xuanzang's records and Chinese chronicles."
+  },
+  {
+    q: "Who founded the four Mathas in the four corners of India?",
+    options: [
+      "Shankaracharya",
+      "Ramanujacharya",
+      "Bhaskaracharya",
+      "Madhvacharya"
+    ],
+    correct: 0,
+    explanation: "Adi Shankaracharya established mathas at Sringeri (S), Dwarka (W), Puri (E), and Badrinath (N) c. 8th century."
+  },
+  {
+    q: "The presiding deity of Bhojsala Temple is",
+    options: [
+      "Goddess Durga",
+      "Goddess Laxmi",
+      "Goddess Saraswati",
+      "Goddess Parvati"
+    ],
+    correct: 2,
+    explanation: "Bhojshala (Dhar, MP) was dedicated to Saraswati by Paramara king Bhoja, featuring a unique open-plan design."
+  },
+  {
+    q: "Rath Temples at Mahabalipuram were built in the reign of which Pallava ruler?",
+    options: [
+      "Mahendravarman",
+      "Narasinghvarman I",
+      "Parameshwarvarman",
+      "Nandivarman I"
+    ],
+    correct: 1,
+    explanation: "Narasimhavarman I (630-668 CE) commissioned the monolithic Pancha Rathas to commemorate Pallava military victories."
+  },
+  {
+    q: "‘Ramayan am’ the Tamil version of the great epic Ramayana was made by",
+    options: [
+      "Kamban",
+      "Avvaiyar",
+      "Ilango Vadigal",
+      "None of these"
+    ],
+    correct: 0,
+    explanation: "Kamban's 12th-century Ramavataram reinterpreted Valmiki's epic in Tamil, influencing Bhakti literature."
+  },
+  {
+    q: "Which one of the following is not a work on architecture?",
+    options: [
+      "Manasare",
+      "Samarangana Sutradhara",
+      "Mahavastu",
+      "Mayamata"
+    ],
+    correct: 2,
+    explanation: "Mahavastu is a Hinayana Buddhist text on Buddha's life, while others are Vastu Shastra treatises."
+  },
+  {
+    q: "Sugandhadevi who issued coins with the figure of seated Lakshmi was a Queen of",
+    options: [
+      "Karnataka",
+      "Kashmir",
+      "Orissa",
+      "Saurashtra"
+    ],
+    correct: 1,
+    explanation: "Sugandha (r. 904-906 CE) ruled Kashmir, minting coins with Lakshmi to assert legitimacy after her husband's death."
+  },
+  {
+    q: "Who among the following believed in the theory of Bhedabhed?",
+    options: [
+      "Vallabhacharya",
+      "Nimbarakacharya",
+      "Madhvacharya",
+      "Ramanujacharya"
+    ],
+    correct: 1,
+    explanation: "Nimbarka's Dvaitadvaita philosophy emphasized simultaneous difference and non-difference between God and souls."
+  },
+  {
+    q: "What was the main objective of Sultan Mahmud’s Indian conquests?",
+    options: [
+      "Propagation of Religion",
+      "Extension of Empire",
+      "Acquisition of Wealth",
+      "None of these"
+    ],
+    correct: 2,
+    explanation: "Mahmud's 17 raids (1000-1026 CE) targeted temple wealth (e.g., Somnath), funding Ghaznavid expansion in Central Asia."
+  },
+  {
+    q: "In the context of cultural history of India, a pose in dance and dramatics called ‘Tribhanga’ has been a favourite of Indian artists from ancient times till today. Which one of the following statements best describes this pose?",
+    options: [
+      "One leg is bent and the body is slightly but oppositely curved at waist and neck",
+      "Facial expressions, hand gestures and make-up are combined to symbolize certain epic or historic characters",
+      "Movements of body, face and hands are used to express oneself or to tell a story",
+      "A little smile, slightly curved waist and certain hand gestures are emphasized to express the feelings of love or eroticism."
+    ],
+    correct: 0,
+    explanation: "Tribhanga (triple bend) creates an S-shaped curve at neck, waist, and knee, seen in Odissi and iconography."
+  },
+  {
+    q: "Rajputas are mentioned as Agnikula Kshatriyas in",
+    options: [
+      "Prithviraj Raso",
+      "Rajatarangini",
+      "Vikramankadeva Charita",
+      "Dasakumara Charita"
+    ],
+    correct: 0,
+    explanation: "Prithviraj Raso (Chand Bardai) popularized the Agnikula myth, claiming Rajputs originated from fire-pit at Mt. Abu."
+  },
+  {
+    q: "Who wrote Prithviraj Raso?",
+    options: [
+      "Kalhana",
+      "Vishakadatta",
+      "Rajasekara",
+      "Chandbaradai"
+    ],
+    correct: 3,
+    explanation: "Chand Bardai, court poet of Prithviraj III, composed this epic poem blending history and legend in Apabhramsha."
+  },
+  {
+    q: "Who was the Shahi ruler of Punjab defeated by Muhammad Ghazni?",
+    options: [
+      "Nagabhatta",
+      "Prithviraj",
+      "Jayapala",
+      "Mahipala"
+    ],
+    correct: 2,
+    explanation: "Jayapala lost to Mahmud at Peshawar (1001 CE), leading to the collapse of the Hindu Shahi dynasty."
+  },
+  {
+    q: "Rajatarangini was written by",
+    options: [
+      "Devadatta",
+      "Kalhana",
+      "Dhandi",
+      "Bharavi"
+    ],
+    correct: 1,
+    explanation: "Kalhana's 12th-century Sanskrit chronicle documents Kashmir's history, using inscriptions and eyewitness accounts."
+  },
+  {
+    q: "The Rajput dynasty that ruled Kannauj was",
+    options: [
+      "Gurjara Pratharas",
+      "Chandelas",
+      "Gahadvalas",
+      "a and c"
+    ],
+    correct: 3,
+    explanation: "Both Gurjara-Pratiharas (8th-10th c.) and Gahadavalas (11th-12th c.) controlled Kannauj during different periods."
+  },
+  {
+    q: "What was the capital of Gurjara Prathiaras?",
+    options: [
+      "Bhimnal",
+      "Rangapur",
+      "Manda",
+      "Khajuraho"
+    ],
+    correct: 0,
+    explanation: "Early capital was Bhinmal (Rajasthan), later shifted to Kannauj under Nagabhata II for strategic control."
+  },
+  {
+    q: "Who may be the founder of Prathhara dynasty?",
+    options: [
+      "Dharmapala",
+      "Gopala",
+      "Bhoja",
+      "Prathhara"
+    ],
+    correct: 3,
+    explanation: "Harichandra or Nagabhata I are considered founders, but mythical origin traces to Lakshmana (Pratihara = 'doorkeeper')."
+  },
+  {
+    q: "Who was the first prominent ruler of Prathihara dynasty?",
+    options: [
+      "Bhoja I",
+      "Nagabhatta",
+      "Jayapala",
+      "Chandradeva"
+    ],
+    correct: 1,
+    explanation: "Nagabhata I (r. 730-760 CE) defeated Arabs and expanded control from Ujjain, establishing imperial foundations."
+  },
+  {
+    q: "The Prathihara ruler who occupied Kannauj?",
+    options: [
+      "Jayachandra",
+      "Pritiviraj",
+      "Nagabhatta",
+      "Rajyapala"
+    ],
+    correct: 2,
+    explanation: "Nagabhata II captured Kannauj c. 815 CE, making it the Pratihara capital for 200 years."
+  },
+  {
+    q: "The Pala ruler who was defeated by the Prathihara ruler Nagabhatta?",
+    options: [
+      "Govindapala",
+      "Mahipala",
+      "Dharmapala",
+      "Gopala"
+    ],
+    correct: 2,
+    explanation: "Dharmapala lost to Nagabhata II at Monghyr (c. 810 CE), checking Pala expansion in the Tripartite Struggle."
+  },
+  {
+    q: "The prominent ruler of Prathihara dynasty Bhoja I ruled from",
+    options: [
+      "840-890 A.D",
+      "850-860 A.D",
+      "860-870 A.D",
+      "870-880 A.D"
+    ],
+    correct: 0,
+    explanation: "Bhoja I's reign (836-885 CE) marked the zenith of Pratihara power, with control from Punjab to Bengal."
+  },
+  {
+    q: "Who was the last ruler of Prathihara dynasty?",
+    options: [
+      "Nagabhatta",
+      "Vijayalaya",
+      "Simhavishnu",
+      "Rajyapala"
+    ],
+    correct: 3,
+    explanation: "Rajyapala (r. 960-1018 CE) fled Mahmud's invasion, leading to the dynasty's collapse under Ghaznavid pressure."
+  },
+  {
+    q: "Why did the Gurjara Prathhara dynasty decline?",
+    options: [
+      "invasions of Muhammad Bin Quasim",
+      "invasions of Muhammad Ghori",
+      "invasions of Muhammad Ghazini",
+      "invasions of Hunas"
+    ],
+    correct: 2,
+    explanation: "Mahmud of Ghazni's repeated raids (1008-1026 CE) drained resources, enabling vassals like Gahadavalas to rebel."
+  },
+  {
+    q: "Prathihara dynasty came to end in",
+    options: [
+      "1001 A.D",
+      "1018 A.D",
+      "1213 A.D",
+      "1214 A.D"
+    ],
+    correct: 1,
+    explanation: "After Rajyapala's death (1018 CE), the empire fragmented into local kingdoms like Chandellas and Paramaras."
+  },
+  {
+    q: "The Rajput Clan that ruled Bundelkhand was",
+    options: [
+      "Gahadvalas",
+      "Chandelas",
+      "Prathiharas",
+      "Paramaras"
+    ],
+    correct: 1,
+    explanation: "Chandelas ruled Bundelkhand (9th-13th c.), building Khajuraho temples and forts like Kalinjar."
+  },
+  {
+    q: "What was the capital of Chandelas?",
+    options: [
+      "Bhimnal",
+      "Kannauj",
+      "Khajuraho",
+      "Ajmer"
+    ],
+    correct: 2,
+    explanation: "Khajuraho served as cultural capital, while Mahoba was the administrative center of the Chandela kingdom."
+  },
+  {
+    q: "Who was the founder of Chandela dynasty?",
+    options: [
+      "Jayasaki",
+      "Narasimha",
+      "Chandradeva",
+      "Nagabhatta"
+    ],
+    correct: 0,
+    explanation: "Nannuka founded the dynasty (c. 831 CE), but Jayashakti (Jeja) established regional dominance in Jejakabhukti."
+  },
+  {
+    q: "Who was the most prominent ruler of the Chandela dynasty?",
+    options: [
+      "Krishna",
+      "Bhoja",
+      "Dhanga",
+      "Jayachandra"
+    ],
+    correct: 2,
+    explanation: "Dhanga (r. 950-999 CE) commissioned major Khajuraho temples and maintained strategic autonomy from neighbors."
+  },
+  {
+    q: "Who built the famous temples at Khajuraho?",
+    options: [
+      "Chandelas",
+      "Gahadvalas",
+      "Palas",
+      "Senas"
+    ],
+    correct: 0,
+    explanation: "Chandela kings built 85 temples (950-1150 CE), blending Nagara architecture with intricate erotic sculptures."
+  },
+  {
+    q: "The Chandela ruler who built famous temple at Khajurao?",
+    options: [
+      "Dhanga",
+      "Chandradeva",
+      "Jayadeva",
+      "Bhimadeva"
+    ],
+    correct: 0,
+    explanation: "Dhanga commissioned Kandariya Mahadeva (c. 999 CE), the largest temple at Khajuraho, dedicated to Shiva."
+  },
+  {
+    q: "The son of Dhanga who gave resistance to Muhammad Ghazni",
+    options: [
+      "Jayapala",
+      "Anandapala",
+      "Rajyapala",
+      "Ganda"
+    ],
+    correct: 3,
+    explanation: "Ganda (r. 999-1002 CE) defended Kalinjar against Mahmud but lost after a prolonged siege in 1023 CE."
+  },
+  {
+    q: "The Muslim ruler who conquered the kingdom of Bundelkhand in 1203 A.D?",
+    options: [
+      "Muhammad Ghazni",
+      "Muhammad Bin Quasim",
+      "Qutb-ud-din Aibak",
+      "Iltutmish"
+    ],
+    correct: 2,
+    explanation: "Qutb-ud-din Aibak captured Kalinjar (1203 CE), ending Chandela rule in Bundelkhand under Ghurid expansion."
+  },
+  {
+    q: "Who was the founder of Paramara dynasty?",
+    options: [
+      "Siyaka",
+      "Krishna Raja",
+      "Mahadeva",
+      "Nagabhatta"
+    ],
+    correct: 0,
+    explanation: "Siyaka I established independence from Rashtrakutas (c. 948 CE), founding the Malwa-based Paramara kingdom."
+  },
+  {
+    q: "Who established independent Paramara dynasty?",
+    options: [
+      "Rajasekara",
+      "Vishaladeva",
+      "Prithviraj",
+      "Siyaka II"
+    ],
+    correct: 3,
+    explanation: "Siyaka II (r. 948-972 CE) defeated Rashtrakuta king Khottiga, declaring full sovereignty over Malwa."
+  },
+  {
+    q: "Paramara dynasty ruled",
+    options: [
+      "Bundelkhand",
+      "Kannauj",
+      "Malwa",
+      "Bengal"
+    ],
+    correct: 2,
+    explanation: "Paramaras ruled Malwa (9th-14th c.) with capitals at Dhara and Mandu, known for cultural achievements."
+  },
+  {
+    q: "What was the capital of Paramaras?",
+    options: [
+      "Dhara",
+      "Kannauj",
+      "Manda",
+      "Khajuraho"
+    ],
+    correct: 0,
+    explanation: "Dhara (Madhya Pradesh) was the administrative and intellectual center, housing Bhoja's Saraswati temple."
+  },
+  {
+    q: "Who was the most important ruler of Paramara dynasty?",
+    options: [
+      "Dhanga",
+      "Bhoja",
+      "Dhruva",
+      "Krishna"
+    ],
+    correct: 1,
+    explanation: "Bhoja (r. 1010-1055 CE) was a polymath king, authoring 84 books and building engineering projects."
+  },
+  {
+    q: "Kaviraja Malavachakravartin was the title of",
+    options: [
+      "Jayachandra",
+      "Chandradeva",
+      "Vishaladeva",
+      "Bhoja"
+    ],
+    correct: 3,
+    explanation: "Bhoja earned 'King of Poets' title for works like Samaranganasutradhara (architecture) and Ayurvedic texts."
+  },
+  {
+    q: "The Paramara ruler who established a university at Dhara?",
+    options: [
+      "Bhoja",
+      "Nagabhatta",
+      "Simhavishnu",
+      "Mahadeva"
+    ],
+    correct: 0,
+    explanation: "Bhoja established Saraswati Sadana at Dhara, attracting scholars across disciplines including Al-Biruni."
+  },
+  {
+    q: "The first Muslims invaded India were",
+    options: [
+      "Arabs",
+      "Turks",
+      "Afghans",
+      "Persians"
+    ],
+    correct: 0,
+    explanation: "Arab forces under Muhammad bin Qasim conquered Sindh in 712 CE, establishing the first Islamic rule in India."
+  },
+  {
+    q: "Who was the last Hindu king ruled North India?",
+    options: [
+      "Pulakesi",
+      "Kanishka",
+      "Chandradeva",
+      "Harsha"
+    ],
+    correct: 3,
+    explanation: "Harsha (606-647 CE) was the last pan-North Indian Hindu ruler before Islamic invasions fragmented the region."
+  },
+  {
+    q: "The first Muslim expedition on India took place in",
+    options: [
+      "716 A.D.",
+      "718 A.D.",
+      "712 A.D.",
+      "720 A.D."
+    ],
+    correct: 2,
+    explanation: "Muhammad bin Qasim's conquest of Sindh (712 CE) marked Islam's first political foothold in South Asia."
+  },
+  {
+    q: "Who was the Hindu king at the time of invasion of Muhammad-Bin Quasim on Sind?",
+    options: [
+      "Dahir",
+      "Hala",
+      "Krishna",
+      "Ananda Pala"
+    ],
+    correct: 0,
+    explanation: "Raja Dahir (r. 679-712 CE) died defending Brahmanabad, ending Rai dynasty's rule in Sindh."
+  },
+  {
+    q: "Who established first Islamic empire in India?",
+    options: [
+      "Hizzaz",
+      "Muhammad-Bin-Quasim",
+      "Muhammad Ghazni",
+      "Muhammad Ghor"
+    ],
+    correct: 3,
+    explanation: "Muhammad Ghori's victories (1192-1206 CE) created the Delhi Sultanate, India's first sustained Islamic empire."
+  },
+  {
+    q: "Muhammad Ghazni invaded India 17 times between",
+    options: [
+      "900-950 A.D.",
+      "950-1000 A.D.",
+      "1000-1026 A.D.",
+      "1025-1046 A.D."
+    ],
+    correct: 2,
+    explanation: "Ghazni's raids (1000-1026 CE) targeted wealthy temples, bringing 6.5 million dinars to fund his Central Asian wars."
+  },
+  {
+    q: "Muhammad Ghazni plundered Somnath temple in Kathiawar in",
+    options: [
+      "1020 A.D.",
+      "1025 A.D.",
+      "1030 A.D.",
+      "1029 A.D."
+    ],
+    correct: 1,
+    explanation: "The 1025 CE Somnath raid yielded 20 million dinars, becoming the most infamous of Ghazni's expeditions."
+  },
+  {
+    q: "The first Tarain war took place in",
+    options: [
+      "1191 A.D.",
+      "1193 A.D.",
+      "1195 A.D.",
+      "1197 A.D."
+    ],
+    correct: 0,
+    explanation: "1191 CE: Prithviraj Chauhan defeated Ghori at Tarain (Haryana), temporarily halting Turkic expansion."
+  },
+  {
+    q: "The second Tarain war took place in",
+    options: [
+      "1193 A.D.",
+      "1198 A.D.",
+      "1199 A.D.",
+      "1192 A.D."
+    ],
+    correct: 3,
+    explanation: "1192 CE: Ghori's cavalry tactics crushed Chauhan forces at Tarain, opening North India to Turkic rule."
+  },
+  {
+    q: "The Rajput king who was defeated and killed in second Tarain war?",
+    options: [
+      "Nagabhatta",
+      "Prithviraj Chauhan",
+      "Rana Pratap",
+      "Jaya Chandra"
+    ],
+    correct: 1,
+    explanation: "Prithviraj Chauhan was captured and executed after the 1192 CE battle, ending Rajput dominance in North India."
   }
 ];
-
-
 
 
 //##############
